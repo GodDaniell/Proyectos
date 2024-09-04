@@ -1,0 +1,12 @@
+X26 = Identificador
+= = Caracter
+35 = Numero
++ = OperadorTermino
+100 = Numero
+; = FinSentencia
++ = OperadorTermino
+- = OperadorTermino
+{ = InicioBloque
+} = FinBloque
+? = OperadorTernario
+￿ = Caracter
