@@ -4,11 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 
-/*
-    Requerimiento 1: Sobrecargar el constructor Lexico para que reciba como
-                     argumento el nombre del archivo a compilar
-    Requerimiento 2: Tener un contador de líneas 
-*/
 namespace Lexico_1
 {
     public class Lexico : Token, IDisposable
@@ -18,7 +13,6 @@ namespace Lexico_1
         StreamWriter asm;
         int linea;
 
-        // Constructor por defecto
         public Lexico()
         {
             linea = 1;
@@ -80,7 +74,7 @@ namespace Lexico_1
             {
                 if (c == '\n')
                 {
-                    linea++; 
+                    linea++;
                 }
             }
 
@@ -104,9 +98,9 @@ namespace Lexico_1
                 }
                 return;
             }
-            else if (c == '$') 
+            else if (c == '$')
             {
-                c = (char)archivo.Peek(); 
+                c = (char)archivo.Peek();
                 if (char.IsDigit(c))
                 {
                     setClasificacion(Tipos.Moneda);
@@ -114,11 +108,10 @@ namespace Lexico_1
                     while (char.IsDigit(c))
                     {
                         buffer += c;
-                        c = (char)archivo.Read(); 
+                        c = (char)archivo.Read();
                     }
                 }
             }
-
             else if (c == ';')
             {
                 setClasificacion(Tipos.FinSentencia);
@@ -155,8 +148,6 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
-
-            // Operadores relacionales: ==
             else if (c == '=')
             {
                 setClasificacion(Tipos.Caracter);
@@ -167,8 +158,6 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
-
-            // Operadores relacionales: <= y <>
             else if (c == '<')
             {
                 setClasificacion(Tipos.Caracter);
@@ -178,9 +167,13 @@ namespace Lexico_1
                     buffer += c;
                     archivo.Read();
                 }
+                else if (c == '<')
+                {
+                    setClasificacion(Tipos.OperadorRelacional);
+                    buffer += c;
+                    archivo.Read();
+                }
             }
-
-            // Operadores relacionales: >=
             else if (c == '>')
             {
                 setClasificacion(Tipos.Caracter);
@@ -190,42 +183,43 @@ namespace Lexico_1
                     buffer += c;
                     archivo.Read();
                 }
-            }
-
-            // Operador relacional: !=
-            else if (c == '!')
-            {
-                setClasificacion(Tipos.Caracter); // Si solo es "!"
-                if ((c = (char)archivo.Peek()) == '=')
+                else if (c == '>')
                 {
-                    setClasificacion(Tipos.OperadorRelacional); // Si es "!="
+                    setClasificacion(Tipos.OperadorRelacional);
                     buffer += c;
                     archivo.Read();
                 }
             }
-
-            // Nuevo token: Operadores lógicos "&&" y "||"
+            else if (c == '!')
+            {
+                setClasificacion(Tipos.Caracter);
+                if ((c = (char)archivo.Peek()) == '=')
+                {
+                    setClasificacion(Tipos.OperadorRelacional);
+                    buffer += c;
+                    archivo.Read();
+                }
+            }
             else if (c == '&')
             {
-                setClasificacion(Tipos.Caracter); // Si solo es "&"
+                setClasificacion(Tipos.Caracter);
                 if ((c = (char)archivo.Peek()) == '&')
                 {
-                    setClasificacion(Tipos.OperadorLogico); // Si es "&&"
+                    setClasificacion(Tipos.OperadorLogico);
                     buffer += c;
                     archivo.Read();
                 }
             }
             else if (c == '|')
             {
-                setClasificacion(Tipos.Caracter); // Si solo es "|"
+                setClasificacion(Tipos.Caracter);
                 if ((c = (char)archivo.Peek()) == '|')
                 {
-                    setClasificacion(Tipos.OperadorLogico); // Si es "||"
+                    setClasificacion(Tipos.OperadorLogico);
                     buffer += c;
                     archivo.Read();
                 }
             }
-
             else if (c == '*' || c == '/' || c == '%')
             {
                 setClasificacion(Tipos.OperadorFactor);
@@ -248,7 +242,3 @@ namespace Lexico_1
         }
     }
 }
-
-
-
-

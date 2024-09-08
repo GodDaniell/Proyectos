@@ -3,10 +3,8 @@
 = = Caracter
 < = Caracter
 > = Caracter
-> = Caracter
-> = Caracter
-< = Caracter
-< = Caracter
+>> = OperadorRelacional
+<< = OperadorRelacional
 <> = OperadorRelacional
 != = OperadorRelacional
 ! = Caracter
@@ -18,4 +16,8 @@ $ = Identificador
 && = OperadorLogico
 ; = FinSentencia
 $$1123 = Moneda
+* = OperadorFactor
+/ = OperadorFactor
++ = OperadorTermino
+- = OperadorTermino
 } = FinBloque
