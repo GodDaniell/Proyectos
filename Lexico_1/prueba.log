@@ -1,23 +1,27 @@
+Línea 2
 { = InicioBloque
+Línea 3
+&& = OperadorLogico
+& = Caracter
+|| = OperadorLogico
+| = Caracter
+! = OperadorLogico
+!= = OperadorRelacional
 == = OperadorRelacional
-= = Caracter
-< = Caracter
-> = Caracter
->> = OperadorRelacional
 << = OperadorRelacional
 <> = OperadorRelacional
-!= = OperadorRelacional
-! = Caracter
-|| = OperadorLogico
-hola = Identificador
-$ = Identificador
-$ = Identificador
-& = Caracter
-&& = OperadorLogico
-; = FinSentencia
-$$1123 = Moneda
-* = OperadorFactor
-/ = OperadorFactor
+>> = OperadorRelacional
+- = OperadorTermino
 + = OperadorTermino
 - = OperadorTermino
+++ = IncrementoTermino
+Línea 4
+$ = Caracter
+$ = Caracter
+$ = Caracter
+$$1123 = Moneda
+$$11 = Moneda
+Línea 5
 } = FinBloque
+Línea 6
+Línea 7

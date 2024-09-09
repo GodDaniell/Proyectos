@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace Lexico_1
@@ -72,9 +71,10 @@ namespace Lexico_1
 
             while (char.IsWhiteSpace(c = (char)archivo.Read()))
             {
-                if (c == '\n')
-                {
+                if (c == '\n')  // Cada vez que encuentra un salto de línea, incrementa el contador
+                { 
                     linea++;
+                    log.WriteLine($"Línea {linea}");
                 }
             }
 
@@ -96,10 +96,11 @@ namespace Lexico_1
                     buffer += c;
                     archivo.Read();
                 }
-                return;
+
             }
             else if (c == '$')
             {
+                setClasificacion(Tipos.Caracter);
                 c = (char)archivo.Peek();
                 if (char.IsDigit(c))
                 {
@@ -150,7 +151,7 @@ namespace Lexico_1
             }
             else if (c == '=')
             {
-                setClasificacion(Tipos.Caracter);
+                setClasificacion(Tipos.Asignacion);
                 if ((c = (char)archivo.Peek()) == '=')
                 {
                     setClasificacion(Tipos.OperadorRelacional);
@@ -192,7 +193,7 @@ namespace Lexico_1
             }
             else if (c == '!')
             {
-                setClasificacion(Tipos.Caracter);
+                setClasificacion(Tipos.OperadorLogico);
                 if ((c = (char)archivo.Peek()) == '=')
                 {
                     setClasificacion(Tipos.OperadorRelacional);
@@ -242,3 +243,4 @@ namespace Lexico_1
         }
     }
 }
+
