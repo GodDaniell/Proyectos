@@ -12,7 +12,7 @@ namespace Lexico_1
             Identificador,Numero,Caracter,FinSentencia,
             InicioBloque, FinBloque, OperadorTernario,
             OperadorTermino, OperadorFactor, OperadorRelacional, OperadorLogico,
-            IncrementoTermino, IncrementoFactor, Moneda, Asignacion
+            IncrementoTermino, IncrementoFactor, Moneda, Asignacion, Puntero, Cadena
         }
         private string contenido;
         private Tipos clasificacion;
@@ -37,5 +37,6 @@ namespace Lexico_1
         {
             return this.clasificacion;
         }
+       
     }
 }

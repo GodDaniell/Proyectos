@@ -1,27 +1,5 @@
-Línea 2
-{ = InicioBloque
-Línea 3
-&& = OperadorLogico
-& = Caracter
-|| = OperadorLogico
-| = Caracter
-! = OperadorLogico
-!= = OperadorRelacional
-== = OperadorRelacional
-<< = OperadorRelacional
-<> = OperadorRelacional
->> = OperadorRelacional
-- = OperadorTermino
-+ = OperadorTermino
-- = OperadorTermino
-++ = IncrementoTermino
-Línea 4
-$ = Caracter
-$ = Caracter
-$ = Caracter
-$$1123 = Moneda
-$$11 = Moneda
-Línea 5
-} = FinBloque
-Línea 6
-Línea 7
+"" ---> Cadena
+"como estas" ---> Cadena
+"1234" ---> Cadena
+Error en Lexico: La cadena no se cerró con comillas en la linea 4
+Hay 4 líneas en el archivo prueba.cpp

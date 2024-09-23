@@ -14,7 +14,7 @@ namespace Lexico_1
 
         public Lexico()
         {
-            linea = 1;
+            linea = 0;
             log = new StreamWriter("prueba.log");
             asm = new StreamWriter("prueba.asm");
             log.AutoFlush = true;
@@ -42,6 +42,7 @@ namespace Lexico_1
 
             if (Path.GetExtension(nombreArchivo) == ".cpp")
             {
+                Console.Write("Se esta ejecutando en: " + nombreArchivo + "\n");
                 if (File.Exists(nombreArchivo))
                 {
                     archivo = new StreamReader(nombreArchivo);
@@ -59,6 +60,8 @@ namespace Lexico_1
 
         public void Dispose()
         {
+            log.WriteLine($"Hay {linea} líneas en el archivo prueba.cpp");
+
             archivo.Close();
             log.Close();
             asm.Close();
@@ -71,10 +74,9 @@ namespace Lexico_1
 
             while (char.IsWhiteSpace(c = (char)archivo.Read()))
             {
-                if (c == '\n')  // Cada vez que encuentra un salto de línea, incrementa el contador
-                { 
+                if (c == '\n')
+                {
                     linea++;
-                    log.WriteLine($"Línea {linea}");
                 }
             }
 
@@ -148,11 +150,23 @@ namespace Lexico_1
                     buffer += c;
                     archivo.Read();
                 }
+                else if ((c = (char)archivo.Peek()) == '>')
+                {
+                    setClasificacion(Tipos.Puntero);
+                    buffer += c;
+                    archivo.Read();
+                }
             }
-            else if (c == '=')
+            else if (c == '>')
             {
-                setClasificacion(Tipos.Asignacion);
+                setClasificacion(Tipos.Caracter);
                 if ((c = (char)archivo.Peek()) == '=')
+                {
+                    setClasificacion(Tipos.OperadorRelacional);
+                    buffer += c;
+                    archivo.Read();
+                }
+                else if (c == '>')
                 {
                     setClasificacion(Tipos.OperadorRelacional);
                     buffer += c;
@@ -225,16 +239,35 @@ namespace Lexico_1
             {
                 setClasificacion(Tipos.OperadorFactor);
             }
+            else if (c == '"')
+            {
+                setClasificacion(Tipos.Cadena);
+
+                while (!finArchivo())
+                {
+                    c = (char)archivo.Read();
+                    buffer += c;
+
+                    if (c == '"')
+                    {
+                        break;
+                    }
+                }
+
+                if (finArchivo() && buffer[buffer.Length - 1] != '"')
+                {
+                    throw new Error("en Lexico: La cadena no se cerró con comillas ", log, linea);
+                }
+            }
+
+
+
             else
             {
                 setClasificacion(Tipos.Caracter);
             }
-
-            if (!finArchivo())
-            {
-                setContenido(buffer);
-                log.WriteLine(getContenido() + " = " + getClasificacion());
-            }
+            setContenido(buffer);
+            log.WriteLine(getContenido() + " ---> " + getClasificacion());
         }
 
         public bool finArchivo()
@@ -243,4 +276,5 @@ namespace Lexico_1
         }
     }
 }
+
 

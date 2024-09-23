@@ -11,7 +11,7 @@ namespace Lexico_1
         {
             try
             {
-                using (Lexico l = new Lexico())
+                using (Lexico l = new Lexico("prueba.cpp"))
                 {
                     while (!l.finArchivo())
                     {
@@ -26,4 +26,5 @@ namespace Lexico_1
         }
     }
 }
+
 
