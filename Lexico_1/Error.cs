@@ -10,7 +10,7 @@ namespace Lexico_1
     {
         public Error(string message, StreamWriter log ) : base(message)
         {
-            log.WriteLine("Error: " + message);
+            log.WriteLine("Error " + message);
         }
 
          public  Error (string message, StreamWriter log, int linea) : base(message)

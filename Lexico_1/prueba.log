@@ -1,5 +1,18 @@
 "" ---> Cadena
 "como estas" ---> Cadena
 "1234" ---> Cadena
-Error en Lexico: La cadena no se cerró con comillas en la linea 4
-Hay 4 líneas en el archivo prueba.cpp
+"Hola" ---> Cadena
+# ---> Caracter
+#123 ---> Caracter
+# ---> Caracter
+h ---> Identificador
+@ ---> Caracter
+'Hola' ---> Caracter
+'' ---> Caracter
+'A' ---> Caracter
+"Hola
+" ---> Cadena
+'A
+' ---> Caracter
+￿ ---> Caracter
+Hay 15 líneas en el archivo prueba.cpp

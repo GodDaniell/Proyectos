@@ -1,4 +1,12 @@
 ""
 "como estas"
 "1234"
-"Hola
+"Hola"
+#
+#123
+#h
+@
+'Hola'
+''
+'A
+

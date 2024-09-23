@@ -90,6 +90,7 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
+
             else if (char.IsDigit(c))
             {
                 setClasificacion(Tipos.Numero);
@@ -100,6 +101,7 @@ namespace Lexico_1
                 }
 
             }
+
             else if (c == '$')
             {
                 setClasificacion(Tipos.Caracter);
@@ -115,22 +117,27 @@ namespace Lexico_1
                     }
                 }
             }
+
             else if (c == ';')
             {
                 setClasificacion(Tipos.FinSentencia);
             }
+
             else if (c == '{')
             {
                 setClasificacion(Tipos.InicioBloque);
             }
+
             else if (c == '}')
             {
                 setClasificacion(Tipos.FinBloque);
             }
+
             else if (c == '?')
             {
                 setClasificacion(Tipos.OperadorTernario);
             }
+
             else if (c == '+')
             {
                 setClasificacion(Tipos.OperadorTermino);
@@ -141,6 +148,7 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
+
             else if (c == '-')
             {
                 setClasificacion(Tipos.OperadorTermino);
@@ -157,6 +165,7 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
+
             else if (c == '>')
             {
                 setClasificacion(Tipos.Caracter);
@@ -173,6 +182,7 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
+
             else if (c == '<')
             {
                 setClasificacion(Tipos.Caracter);
@@ -189,6 +199,7 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
+
             else if (c == '>')
             {
                 setClasificacion(Tipos.Caracter);
@@ -205,6 +216,7 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
+
             else if (c == '!')
             {
                 setClasificacion(Tipos.OperadorLogico);
@@ -215,6 +227,7 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
+
             else if (c == '&')
             {
                 setClasificacion(Tipos.Caracter);
@@ -225,6 +238,7 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
+
             else if (c == '|')
             {
                 setClasificacion(Tipos.Caracter);
@@ -235,10 +249,12 @@ namespace Lexico_1
                     archivo.Read();
                 }
             }
+
             else if (c == '*' || c == '/' || c == '%')
             {
                 setClasificacion(Tipos.OperadorFactor);
             }
+
             else if (c == '"')
             {
                 setClasificacion(Tipos.Cadena);
@@ -256,11 +272,47 @@ namespace Lexico_1
 
                 if (finArchivo() && buffer[buffer.Length - 1] != '"')
                 {
-                    throw new Error("en Lexico: La cadena no se cerró con comillas ", log, linea);
+                    throw new Error("en Lexico: La cadena no se cerró con comillas. ", log, linea);
                 }
             }
 
+            else if (c == '#')
+            {
+                setClasificacion(Tipos.Caracter);
 
+                while (char.IsDigit((char)archivo.Peek()))
+                {
+                    c = (char)archivo.Read();
+                    buffer += c;
+                }
+            }
+
+            else if (c == '@')
+            {
+                setClasificacion(Tipos.Caracter);
+
+            }
+
+            else if (c == '\'')
+            {
+                setClasificacion(Tipos.Caracter);
+
+                while (!finArchivo())
+                {
+                    c = (char)archivo.Read();
+                    buffer += c;
+
+                    if (c == '\'')
+                    {
+                        break;
+                    }
+                }
+
+                if (finArchivo() && buffer[buffer.Length - 1] != '\'')
+                {
+                    throw new Error("en Léxico: La cadena no se cerraron las comillas simples.", log, linea);
+                }
+            }
 
             else
             {
