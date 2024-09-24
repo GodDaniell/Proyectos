@@ -67,7 +67,7 @@ namespace Lexico_1
             asm.Close();
         }
 
-        public void nextToken()
+        public void NextToken()
         {
             char c;
             string buffer = "";
@@ -89,17 +89,6 @@ namespace Lexico_1
                     buffer += c;
                     archivo.Read();
                 }
-            }
-
-            else if (char.IsDigit(c))
-            {
-                setClasificacion(Tipos.Numero);
-                while (char.IsDigit(c = (char)archivo.Peek()))
-                {
-                    buffer += c;
-                    archivo.Read();
-                }
-
             }
 
             else if (c == '$')
@@ -272,7 +261,7 @@ namespace Lexico_1
 
                 if (finArchivo() && buffer[buffer.Length - 1] != '"')
                 {
-                    throw new Error("en Lexico: La cadena no se cerró con comillas. ", log, linea);
+                    throw new Error("en Lexico: La cadena no se cerró con comillas ", log, linea);
                 }
             }
 
@@ -292,25 +281,84 @@ namespace Lexico_1
                 setClasificacion(Tipos.Caracter);
 
             }
-
             else if (c == '\'')
             {
                 setClasificacion(Tipos.Caracter);
+                buffer += c;
 
-                while (!finArchivo())
+                if ((char)archivo.Peek() == '\'')
+                {
+                    throw new Error("en Léxico: Las comillas simples están vacías ", log, linea);
+                }
+                else
                 {
                     c = (char)archivo.Read();
                     buffer += c;
 
-                    if (c == '\'')
+                    if ((char)archivo.Peek() == '\'')
                     {
-                        break;
+                        c = (char)archivo.Read();
+                        buffer += c;
+                    }
+                    else
+                    {
+                        throw new Error("en Léxico: La cadena no se cerró con comillas simples ", log, linea);
+                    }
+                }
+            }
+
+
+            else if (char.IsDigit(c))
+            {
+                setClasificacion(Tipos.Numero);
+
+                while (char.IsDigit((char)archivo.Peek()))
+                {
+                    c = (char)archivo.Read();
+                    buffer += c;
+                }
+
+                // Verificamos si el siguiente carácter es un punto decimal
+                if ((char)archivo.Peek() == '.')
+                {
+                    c = (char)archivo.Read();
+                    buffer += c;
+
+                    if (!char.IsDigit((char)archivo.Peek()))
+                    {
+                        throw new Error("en Léxico: Se esperaba un dígito después del punto decimal", log, linea);
+                    }
+
+                    while (char.IsDigit((char)archivo.Peek()))
+                    {
+                        c = (char)archivo.Read();
+                        buffer += c;
                     }
                 }
 
-                if (finArchivo() && buffer[buffer.Length - 1] != '\'')
+                // Verificamos si el siguiente carácter es 'e' o 'E' para notación científica
+                if (char.ToLower((char)archivo.Peek()) == 'e')
                 {
-                    throw new Error("en Léxico: La cadena no se cerraron las comillas simples.", log, linea);
+                    c = (char)archivo.Read();
+                    buffer += c;
+
+                    c = (char)archivo.Peek();
+                    if (c == '+' || c == '-')
+                    {
+                        c = (char)archivo.Read();
+                        buffer += c;
+                    }
+
+                    if (!char.IsDigit((char)archivo.Peek()))
+                    {
+                        throw new Error("en Léxico: Se esperaba un dígito después de 'e' ", log, linea);
+                    }
+
+                    while (char.IsDigit((char)archivo.Peek()))
+                    {
+                        c = (char)archivo.Read();
+                        buffer += c;
+                    }
                 }
             }
 

@@ -15,7 +15,7 @@ namespace Lexico_1
                 {
                     while (!l.finArchivo())
                     {
-                        l.nextToken();
+                        l.NextToken();
                     }
                 }
             }
