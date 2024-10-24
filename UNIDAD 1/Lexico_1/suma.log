@@ -1,0 +1,25 @@
+{ ---> InicioBloque
+123 ---> Numero
+hola ---> Identificador
+< ---> Caracter
+> ---> Caracter
+= ---> Caracter
++ ---> OperadorTermino
+* ---> OperadorFactor
+- ---> OperadorTermino
+/ ---> OperadorFactor
+++ ---> IncrementoTermino
+-- ---> IncrementoTermino
+= ---> Caracter
+= ---> Caracter
+-> ---> Puntero
+$ ---> Caracter
+$$1123 ---> Moneda
+& ---> Caracter
+&& ---> OperadorLogico
+| ---> Caracter
+|| ---> OperadorLogico
+<< ---> OperadorRelacional
+>> ---> OperadorRelacional
+} ---> FinBloque
+Hay 24 líneas en el archivo prueba.cpp
