@@ -9,19 +9,21 @@ namespace Lexico2
     {
         static void Main(string[] args)
         {
-            try
+
+            using (Lexico l = new Lexico("prueba.cpp"))
             {
-                using (Lexico l = new Lexico())
+
+                try
                 {
                     while (!l.finArchivo())
                     {
                         l.NextToken();
                     }
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: " + e.Message);
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error: " + e.Message);
+                }
             }
         }
     }

@@ -266,15 +266,11 @@ namespace Lexico2
                     break;
 
                 case 9:
-                    if (c == '{')
-                    {
-                        setClasificacion(Tipos.InicioBloque);
-                        nuevoEstado = F; // Termina la clasificación en el estado final
-                    }
+                    setClasificacion(Tipos.InicioBloque);
+                    nuevoEstado = F; // Termina la clasificación en el estado final
                     break;
 
                 case 10:
-                    if (c == '}')
                     {
                         setClasificacion(Tipos.FinBloque);
                         nuevoEstado = F; // Termina la clasificación en el estado final
@@ -282,7 +278,6 @@ namespace Lexico2
                     break;
 
                 case 11:
-                    if (c == '?')
                     {
                         setClasificacion(Tipos.OperadorTernario);
                         nuevoEstado = F; // Termina la clasificación en el estado final
@@ -525,8 +520,9 @@ namespace Lexico2
                     {
                         nuevoEstado = 37;
                     }
-                    else if (finArchivo()) {
-                        throw new Error ("Comentario no cerrado", log,linea);
+                    else if (finArchivo())
+                    {
+                        nuevoEstado = E;
                     }
                     else
                     {
@@ -543,15 +539,19 @@ namespace Lexico2
                     {
                         nuevoEstado = 37;
                     }
+                    else if (finArchivo())
+                    {
+                        nuevoEstado = E;
+                    }
                     else
                     {
-                        estado = 36;
+                        nuevoEstado = 36;
                     }
                     break;
 
             }
 
-            return estado;
+            return nuevoEstado;
         }
 
         public void NextToken()
@@ -562,16 +562,15 @@ namespace Lexico2
 
             while (estado >= 0)
             {
+                if (estado == 0)
+                {
+                    buffer = "";
+                }
                 transicion = (char)archivo.Peek();
                 // Console.Write(transicion);
                 estado = automata(transicion, estado);
-                if (estado == E)
-                {
-                    if (getClasificacion() == Tipos.Numero)
-                    {
-                        throw new Error("Lexico, se espera un digito ", log, linea);
-                    }
-                }
+
+
 
                 if (estado >= 0)
                 {
@@ -586,7 +585,27 @@ namespace Lexico2
                     }
                 }
             }
-            Console.WriteLine(getContenido() + " = " + getClasificacion());
+
+            if (estado == E)
+            {
+                if (getClasificacion() == Tipos.Numero)
+                {
+                    throw new Error("Lexico, se espera un digito ", log, linea);
+                }
+                else if (getClasificacion() == Tipos.Caracter)
+                {
+                    throw new Error("Léxico, por caracter inválido  ", log, linea);
+                }
+                else if (getClasificacion() == Tipos.Cadena)
+                {
+                    throw new Error("Léxico, se esperaba que cerrara la cadena", log, linea);
+                }
+                else
+                {
+                    throw new Error("Comentario no cerrado", log, linea);
+                }
+            }
+
             if (!finArchivo())
             {
                 setContenido(buffer);
