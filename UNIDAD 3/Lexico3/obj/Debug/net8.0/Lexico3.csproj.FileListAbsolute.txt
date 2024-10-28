@@ -1,0 +1,15 @@
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\Lexico3.exe
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\Lexico3.deps.json
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\Lexico3.runtimeconfig.json
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\Lexico3.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\Lexico3.pdb
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.AssemblyInfoInputs.cache
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.AssemblyInfo.cs
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.csproj.CoreCompileInputs.cache
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.sourcelink.json
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\refint\Lexico3.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.pdb
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.genruntimeconfig.cache
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\ref\Lexico3.dll
