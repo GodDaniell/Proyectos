@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Collections;
+using ClosedXML.Excel;
 
 namespace Lexico3
 {
@@ -56,6 +57,8 @@ namespace Lexico3
             { 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36 },
             { 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 36, 36, 36, 36,  0, 36, 36, 36 },
         };
+
+         private int[,] matrizExcel = new int[37, 26];
         public Lexico()
         {
             linea = 0;
@@ -110,6 +113,46 @@ namespace Lexico3
             log.Close();
             asm.Close();
         }
+
+        private void CargarMatrizDesdeExcel()
+{
+    matrizExcel = new int[37, 26]; // Ajusta el tamaño según las dimensiones reales.
+
+    using (var workbook = new XLWorkbook(@"C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\TRAND2.xlsx"))
+    {
+        var worksheet = workbook.Worksheet(2);
+        for (int i = 0; i < 37; i++)
+        {
+            for (int j = 0; j < 26; j++)
+            {
+                var cellValue = worksheet.Cell(i + 1, j + 1).GetValue<string>();
+
+                // Manejar celdas vacías
+                if (string.IsNullOrWhiteSpace(cellValue))
+                {
+                    matrizExcel[i, j] = -1; // Valor predeterminado para celdas vacías
+                }
+                else if (cellValue == "F")
+                {
+                    matrizExcel[i, j] = -1; // "F" se convierte a -1
+                }
+                else if (cellValue == "E")
+                {
+                    matrizExcel[i, j] = -2; // "E" se convierte a -2
+                }
+                else if (int.TryParse(cellValue, out int result))
+                {
+                    matrizExcel[i, j] = result; // Si es un número, lo convierte a entero
+                }
+                else
+                {
+                    throw new Exception($"Error: La celda ({i + 1}, {j + 1}) contiene un valor no entero: '{cellValue}'");
+                }
+            }
+        }
+    }
+}
+
 
         private int Columna(char c)
         {
@@ -299,8 +342,14 @@ namespace Lexico3
             }
         }
 
-        public void NextToken()
+        public void NextToken(bool usarMatrizInterna)
         {
+             if (!usarMatrizInterna)
+            {
+                //Console.WriteLine("Leyendo desde excel");
+                CargarMatrizDesdeExcel(); // *Código nuevo*: Llamada a la carga desde Excel si es necesario
+            }
+
             char c;
             string buffer = "";
             int estado = 0;

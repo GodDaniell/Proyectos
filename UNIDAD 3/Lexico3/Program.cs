@@ -15,9 +15,10 @@ namespace Lexico3
 
                 try
                 {
+                    bool usarMatrizInterna = false; // Cambiar a false para utilizar la matriz externa
                     while (!l.finArchivo())
                     {
-                        l.NextToken();
+                        l.NextToken(usarMatrizInterna);
                     }
                 }
                 catch (Exception e)

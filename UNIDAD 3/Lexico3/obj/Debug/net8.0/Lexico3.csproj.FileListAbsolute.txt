@@ -13,3 +13,13 @@ C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\L
 C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.pdb
 C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.genruntimeconfig.cache
 C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\ref\Lexico3.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\ClosedXML.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\ClosedXML.Parser.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\DocumentFormat.OpenXml.Framework.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\ExcelNumberFormat.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\RBush.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\SixLabors.Fonts.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\bin\Debug\net8.0\System.IO.Packaging.dll
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.csproj.AssemblyReference.cache
+C:\Users\danie\OneDrive\Escritorio\Lenguajes y Autómatas I\Proyectos\UNIDAD 3\Lexico3\obj\Debug\net8.0\Lexico3.csproj.Up2Date
