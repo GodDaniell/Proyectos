@@ -42,4 +42,6 @@ radio = Identificador
 "" = Cadena
 ' ' = Caracter
 ; = FinBloque
-Hay 19 líneas en el archivo prueba.cpp
+} = FinBloque
+hola = Identificador
+Hay 20 líneas en el archivo prueba.cpp
