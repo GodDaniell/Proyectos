@@ -16,76 +16,87 @@ namespace Sintaxis_1
         const int F = -1;
         const int E = -2;
 
-        int[,] TRAND =
-        {
-            {  0,  1,  2, 33,  1, 12, 14,  8,  9, 10, 11, 23, 16, 16, 18, 20, 21, 26, 25, 27, 29, 32, 34,  0,  F, 33 },
-            {  F,  1,  1,  F,  1,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  2,  3,  5,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  E,  E,  4,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E },
-            {  F,  F,  4,  F,  5,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  E,  E,  7,  E,  E,  6,  6,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E },
-            {  E,  E,  7,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E },
-            {  F,  F,  7,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F, 13,  F,  F,  F,  F,  F, 13,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F, 13,  F,  F,  F,  F, 13,  F,  F,  F,  F,  F,  F, 15,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 17,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 19,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 19,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 22,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 24,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 24,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 24,  F,  F,  F,  F,  F,  F, 24,  F,  F,  F,  F,  F,  F,  F },
-            { 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 28, 27, 27, 27, 27,  E, 27 },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            { 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 },
-            {  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E, 31,  E,  E,  E,  E,  E },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F, 32,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F },
-            {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 17, 36,  F,  F,  F,  F,  F,  F,  F,  F,  F, 35,  F,  F,  F },
-            { 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35,  0, 35, 35 },
-            { 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, E, 36 },
-            { 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 36, 36, 36, 36,  0, 36, E, 36 },
-        };
+        readonly int[,] TRAND = {
+                 //WS  L   D   .  E|e  +   -   ;   {   }   ?   =   *   %   &   |   !   <   >   "   \  #    /  \n  EOF lambda             
+                {  0,  1,  2, 33,  1, 12, 14,  8,  9, 10, 11, 23, 16, 16, 18, 20, 21, 26, 25, 27, 29, 32, 34,  0,  F, 33  },
+                {  F,  1,  1,  F,  1,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  2,  3,  5,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  E,  E,  4,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E  },
+                {  F,  F,  4,  F,  5,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  E,  E,  7,  E,  E,  6,  6,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E  },
+                {  E,  E,  7,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E  },
+                {  F,  F,  7,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F, 13,  F,  F,  F,  F,  F, 13,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F, 13,  F,  F,  F,  F, 13,  F,  F,  F,  F,  F,  F, 15,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 17,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 19,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 19,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 22,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 24,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 24,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 24,  F,  F,  F,  F,  F,  F, 24,  F,  F,  F,  F,  F,  F,  F  },
+                { 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 28, 27, 27, 27, 27,  E, 27  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                { 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30  },
+                {  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E,  E, 31,  E,  E,  E,  E,  E  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F, 32,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
+                {  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F, 17, 36,  F,  F,  F,  F,  F,  F,  F,  F,  F, 35,  F,  F,  F  },
+                { 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35,  0, 35, 35  },
+                { 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36  },
+                { 36, 36, 36, 36, 36, 36, 35, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 36, 36, 36, 36,  0, 36, 36, 36  }
+            };
 
-        public Lexico() {
+        public Lexico()
+        {
             log = new StreamWriter("prueba.log");
             asm = new StreamWriter("prueba.asm");
 
             log.AutoFlush = true;
             asm.AutoFlush = true;
 
-            if (File.Exists("prueba.cpp")) {
+            if (File.Exists("prueba.cpp"))
+            {
                 archivo = new StreamReader("prueba.cpp");
-            } else {
-                throw new Error("El archivo prueba.cpp no existe",  log);
+            }
+            else
+            {
+                throw new Error("El archivo prueba.cpp no existe", log);
             }
         }
-        public Lexico(string nombreArchivo) {
-            log = new StreamWriter(Path.ChangeExtension(nombreArchivo,  ".log"));
+        public Lexico(string nombreArchivo)
+        {
+            log = new StreamWriter(Path.ChangeExtension(nombreArchivo, ".log"));
             log.AutoFlush = true;
 
-            if (File.Exists(Path.ChangeExtension(nombreArchivo,  ".cpp"))) {
+            if (File.Exists(Path.ChangeExtension(nombreArchivo, ".cpp")))
+            {
                 archivo = new StreamReader(nombreArchivo);
-            } else {
-                throw new Error("El archivo " + nombreArchivo + " no existe",  log);
+            }
+            else
+            {
+                throw new Error("El archivo " + nombreArchivo + " no existe", log);
             }
 
-            if (Path.GetExtension(nombreArchivo) == ".cpp") {
-                asm = new StreamWriter(Path.ChangeExtension(nombreArchivo,  ".asm"));
+            if (Path.GetExtension(nombreArchivo) == ".cpp")
+            {
+                asm = new StreamWriter(Path.ChangeExtension(nombreArchivo, ".asm"));
                 asm.AutoFlush = true;
-            } else {
-                throw new Error("El archivo tiene extension invalida",  log);
+            }
+            else
+            {
+                throw new Error("El archivo tiene extension invalida", log);
             }
         }
 
@@ -202,98 +213,83 @@ namespace Sintaxis_1
             {
                 return 22;
             }
-            else if (c == '.')
-            {
-                return 3;
-            }
             return 25;
         }
 
-        private void Clasificar(int estado)
+                private void Clasificar(int state)
         {
-            switch (estado)
+            switch (state)
             {
-                case 1:
-                    setClasificacion(Tipos.Identificador);
+                case 1: 
+                setClasificacion(Tipos.Identificador); 
                     break;
 
-                case 2:
-                    setClasificacion(Tipos.Numero);
+                case 2: 
+                setClasificacion(Tipos.Numero); 
                     break;
 
-                case 8:
-                    setClasificacion(Tipos.FinBloque);
+                case 8: setClasificacion(Tipos.FinSentencia);
                     break;
 
-                case 9:
-                    setClasificacion(Tipos.InicioBloque);
+                case 9: setClasificacion(Tipos.InicioBloque);
                     break;
 
-                case 10:
-                    setClasificacion(Tipos.FinBloque);
+                case 10: setClasificacion(Tipos.FinBloque); 
                     break;
 
-                case 11:
-                    setClasificacion(Tipos.OperadorTernario);
+                case 11: setClasificacion(Tipos.OperadorTernario); 
                     break;
 
                 case 12:
-                case 14:
-                    setClasificacion(Tipos.OperadorTermino);
+                case 14: setClasificacion(Tipos.OperadorTermino); 
                     break;
 
-                case 13:
-                    setClasificacion(Tipos.IncrementoTermino);
+                case 13: setClasificacion(Tipos.IncrementoTermino); 
                     break;
 
-                case 15:
-                    setClasificacion(Tipos.Puntero);
+                case 15: setClasificacion(Tipos.Puntero); 
                     break;
 
                 case 16:
-                    setClasificacion(Tipos.OperadorFactor);
+                case 34: setClasificacion(Tipos.OperadorFactor); 
                     break;
 
-                case 17:
-                    setClasificacion(Tipos.IncrementoFactor);
+                case 17: setClasificacion(Tipos.IncrementoFactor); 
                     break;
 
                 case 18:
                 case 20:
                 case 29:
                 case 32:
-                case 33:
-                    setClasificacion(Tipos.Caracter);
+                case 33: setClasificacion(Tipos.Caracter); 
                     break;
 
                 case 19:
-                case 21:
-                    setClasificacion(Tipos.OperadorLogico);
+                case 21: setClasificacion(Tipos.OperadorLogico); 
                     break;
 
                 case 22:
                 case 24:
                 case 25:
-                case 26:
-                    setClasificacion(Tipos.OperadorRelacional);
+                case 26: setClasificacion(Tipos.OperadorRelacional); 
                     break;
 
-                case 23:
-                    setClasificacion(Tipos.Asignacion);
+                case 23: setClasificacion(Tipos.Asignacion); 
                     break;
 
-                case 27:
-                    setClasificacion(Tipos.Cadena);
+                case 27: setClasificacion(Tipos.Cadena); 
                     break;
             }
         }
 
-        public void nexToken() {
+        public void nexToken()
+        {
             char c;
             string Buffer = "";
             int estado = 0;
 
-            while (estado >= 0) {
+            while (estado >= 0)
+            {
 
                 if (estado == 0)
                 {
@@ -301,41 +297,76 @@ namespace Sintaxis_1
                 }
 
                 c = (char)archivo.Peek();
-                estado = TRAND[estado, Columna (c)];
+                estado = TRAND[estado, Columna(c)];
                 Clasificar(estado);
 
-                if (estado >= 0) {
+                if (estado >= 0)
+                {
                     archivo.Read();
-                    if (c == '\n') {
+                    if (c == '\n')
+                    {
                         linea++;
                     }
-                    if (estado > 0) {
+                    if (estado > 0)
+                    {
                         Buffer += c;
-                    } else  {
+                    }
+                    else
+                    {
                         Buffer = "";
                     }
                 }
             }
-            if (estado == E) {
+            if (estado == E)
+            {
                 String mensaje;
-                    if (getClasificacion() == Tipos.Numero) {
-                        mensaje ="en Lexico, Se espera un digito";
-                    } else if (getClasificacion() == Tipos.Cadena) {
-                        mensaje = "en Lexico, Se esperaban comillas";
-                    } else if (getClasificacion() == Tipos.Caracter) {
-                        mensaje = "en Lexico, Se esperaba cierre de comentario ";
-                    } else {
-                        mensaje = "en Lexico, Se esperaba cierre de comillas ";
-                    }
-                    throw new Error(mensaje, log, linea);
+                if (getClasificacion() == Tipos.Numero)
+                {
+                    mensaje = "en Lexico, Se espera un digito";
+                }
+                else if (getClasificacion() == Tipos.Cadena)
+                {
+                    mensaje = "en Lexico, Se esperaban comillas";
+                }
+                else if (getClasificacion() == Tipos.Caracter)
+                {
+                    mensaje = "en Lexico, Se esperaba cierre de comentario ";
+                }
+                else
+                {
+                    mensaje = "en Lexico, Se esperaba cierre de comillas ";
+                }
+                throw new Error(mensaje, log, linea);
+            }
+
+            setContenido(Buffer);
+            if (getClasificacion() == Tipos.Identificador)
+            {
+
+                switch (getContenido())
+                {
+                    case "char":
+                    case "int":
+                    case "float":
+                        setClasificacion(Tipos.TipoDato);
+                        break;
+                    case "if":
+                    case "else":
+                    case "while":
+                    case "do":
+                    case "for":
+                        setClasificacion(Tipos.PalabraReservada);
+                        break;
                 }
 
-                setContenido(Buffer);
-                log.WriteLine(getContenido() + " = " + getClasificacion());
-            
+            }
+
+            log.WriteLine(getContenido() + " = " + getClasificacion());
+
         }
 
-        public bool finArchivo() {
+        public bool finArchivo()
+        {
             return archivo.EndOfStream;
         }
     }

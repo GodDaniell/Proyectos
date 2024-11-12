@@ -12,7 +12,8 @@ namespace Sintaxis_1
             Identificador,Numero,Caracter,FinSentencia,
             InicioBloque, FinBloque, OperadorTernario,
             OperadorTermino, OperadorFactor, OperadorRelacional, OperadorLogico,
-            IncrementoTermino, IncrementoFactor, Moneda, Asignacion, Puntero, Cadena
+            IncrementoTermino, IncrementoFactor, Moneda, Asignacion, Puntero, Cadena, TipoDato,
+            PalabraReservada
         }
         private string contenido;
         private Tipos clasificacion;

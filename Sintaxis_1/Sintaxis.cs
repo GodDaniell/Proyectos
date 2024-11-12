@@ -7,7 +7,7 @@ namespace Sintaxis_1
 {
     public class Sintaxis : Lexico
     {
-        public Sintaxis()
+        public Sintaxis() : base()
         {
             nexToken();
         }

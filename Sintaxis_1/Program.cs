@@ -13,7 +13,7 @@ namespace Sintaxis_1
             {
                 using Lenguaje l = new("prueba.cpp");
                 //token.GetAllTokens();
-                l.Libreria();
+                l.Programa();
             }
             catch (Exception error)
             {
