@@ -8,15 +8,15 @@ namespace Sintaxis_1
 {
     public class Error : Exception
     {
-        public Error(string message) : base("Error " + message) { }
+        public Error(string message, int linea) : base("Error " + message) { }
         public Error(string message, StreamWriter logger) : base("Error " + message)
         {
             logger.WriteLine("Error " + message);
         }
 
-        public Error(string message, StreamWriter logger, int line) : base("Error: " + message + " on line " + line)
+        public Error(string message, StreamWriter logger, int linea) : base("Error " + message + " en la linea " + linea)
         {
-            logger.WriteLine("Error: " + message + " on line " + line);
+            logger.WriteLine("Error " + message + " en la linea " + linea);
         }
     }
 }

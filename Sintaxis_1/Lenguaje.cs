@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 /*
 REQUERIMIENTOS
 1.- Indicar en el error lexico o sintatico el numero de linea y caracter
-2.- En el log, colocar el nombre del archivo a compilar, la fecha y la hora (funcion que lea la hora de la compu y grabarlo en el log)
+listo: 2.- En el log, colocar el nombre del archivo a compilar, la fecha y la hora (funcion que lea la hora de la compu y grabarlo en el log)
 3.- Agregar el resto de asignaciones:
     ID = Expresion
     ID++
@@ -24,15 +24,18 @@ namespace Sintaxis_1
 {
     public class Lenguaje : Sintaxis
     {
-        public Lenguaje() : base()
+        public Lenguaje()
+            : base()
         {
             log.WriteLine("Constructor lenguaje");
         }
 
-        public Lenguaje(string name) : base(name)
+        public Lenguaje(string name)
+            : base(name)
         {
             log.WriteLine("Constructor lenguaje");
         }
+
         // ? Cerradura epsilon
         //Programa  -> Librerias? Variables? Main
         public void Programa()
@@ -99,6 +102,7 @@ namespace Sintaxis_1
                 ListaIdentificadores();
             }
         }
+
         // BloqueInstrucciones -> { listaIntrucciones? }
         private void BloqueInstrucciones()
         {
@@ -112,6 +116,7 @@ namespace Sintaxis_1
                 match("}");
             }
         }
+
         // ListaInstrucciones -> Instruccion ListaInstrucciones?
         private void ListaInstrucciones()
         {
@@ -132,6 +137,7 @@ namespace Sintaxis_1
             if (getContenido() == "Console")
             {
                 console();
+                match(";");
             }
             else if (getContenido() == "if")
             {
@@ -159,13 +165,53 @@ namespace Sintaxis_1
                 match(";");
             }
         }
+
         // Asignacion -> Identificador = Expresion;
+        /*
+            3.- Agregar el resto de asignaciones:
+            ID = Expresion
+            ID++
+            ID--
+            ID = Console.ReadLine ()
+            ID IncrementoTermino Expresion
+            ID IncrementoFactor Expresion
+            ID = Console.Read ()
+        */
         private void Asignacion()
         {
             match(Tipos.Identificador);
-            match("=");
-            Expresion();
+
+            if (getContenido() == "=")
+            {
+                match("=");
+                if (getContenido() == "Console")
+                {
+                    console();
+                }
+                else
+                {
+                    Expresion();
+                }
+            }
+            else if (getContenido() == "++" || getContenido() == "--")
+            {
+                match(Tipos.IncrementoTermino);
+            }
+            else
+            {
+                if (getClasificacion() == Tipos.IncrementoTermino)
+                {
+                    match(Tipos.IncrementoTermino);
+                }
+                else
+                {
+                    match(Tipos.IncrementoFactor);
+                }
+                Expresion();
+            }
+
         }
+
         // If -> if (Condicion) bloqueInstrucciones | instruccion
         // (else bloqueInstrucciones | instruccion)?
         private void If()
@@ -225,8 +271,8 @@ namespace Sintaxis_1
             }
         }
 
-        // Do -> do 
-        // bloqueInstrucciones | intruccion 
+        // Do -> do
+        // bloqueInstrucciones | intruccion
         // while(Condicion);
         private void Do()
         {
@@ -245,7 +291,8 @@ namespace Sintaxis_1
             match(")");
             match(";");
         }
-        // For -> for(Asignacion; Condicion; Asignacion) 
+
+        // For -> for(Asignacion; Condicion; Asignacion)
         // BloqueInstrucciones | Intruccion
         private void For()
         {
@@ -266,29 +313,84 @@ namespace Sintaxis_1
             {
                 Instruccion();
             }
-
         }
+
         // Console -> Console.(WriteLine|Write) (cadena concatenaciones?);
         private void console()
         {
+            int tipoConsola;
+            string contenido = "";
+
             match("Console");
             match(".");
 
-            if (getContenido() == "WriteLine")
+            if (getContenido() == "Write")
             {
+                tipoConsola = 1;
+                match("Write");
+            }
+            else if (getContenido() == "WriteLine")
+            {
+                tipoConsola = 2;
                 match("WriteLine");
+            }
+            else if (getContenido() == "Read")
+            {
+                tipoConsola = 3;
+                match("Read");
             }
             else
             {
-                match("Write");
+                tipoConsola = 4;
+                match("ReadLine");
             }
 
             match("(");
-            match(Tipos.Cadena);
+            
+            if (tipoConsola == 1 || tipoConsola == 2)
+            {
+                if (getClasificacion() == Tipos.Cadena || getClasificacion() == Tipos.Identificador)
+                {
+                    contenido = getContenido().Trim('"');
+                    if (getClasificacion() == Tipos.Cadena)
+                    {
+                        match(Tipos.Cadena);
+                    }
+                    else
+                    {
+                        match(Tipos.Identificador);
+                    }
+                    if (getContenido() == "+")
+                    {
+                        //Concatenaciones(ref contenido);
+                    }
+                }
+            }
+
             match(")");
-            match(";");
+
+            if (tipoConsola == 1)
+            {
+                Console.Write(contenido);
+                log.Write(contenido);
+            }
+            else if (tipoConsola == 2)
+            {
+                Console.WriteLine(contenido);
+                log.WriteLine(contenido);
+            }
+            else if (tipoConsola == 3)
+            {
+                Console.Read();
+            }
+            else
+            {
+                Console.ReadLine();
+            }
         }
-        // Main -> static void Main(string[] args) BloqueInstrucciones 
+
+
+        // Main -> static void Main(string[] args) BloqueInstrucciones
         private void Main()
         {
             match("static");
@@ -302,12 +404,14 @@ namespace Sintaxis_1
             match(")");
             BloqueInstrucciones();
         }
+
         // Expresion -> Termino MasTermino
         private void Expresion()
         {
             Termino();
             MasTermino();
         }
+
         // MasTermino -> (OperadorTermino Termino)?
         private void MasTermino()
         {
@@ -317,12 +421,14 @@ namespace Sintaxis_1
                 Termino();
             }
         }
+
         // Termino -> Factor PorFactor
         private void Termino()
         {
             Factor();
             PorFactor();
         }
+
         // PorFactor -> (OperadorFactor Factor)?
         private void PorFactor()
         {
@@ -332,6 +438,7 @@ namespace Sintaxis_1
                 Factor();
             }
         }
+
         // Factor -> numero | identificador | (Expresion)
         private void Factor()
         {

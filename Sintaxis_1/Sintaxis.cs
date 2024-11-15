@@ -25,7 +25,7 @@ namespace Sintaxis_1
             }
             else
             {
-                throw new Error("Sintaxis: se esperaba un " + contenido);
+                throw new Error("Sintaxis: se esperaba un " + contenido, linea);
             }
         }
 
@@ -37,7 +37,7 @@ namespace Sintaxis_1
             }
             else
             {
-                throw new Error("Sintaxis: se esperaba un " + clasificacion);
+                throw new Error("Sintaxis: se esperaba un " + clasificacion, linea);
             }
         }
     }

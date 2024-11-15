@@ -9,7 +9,7 @@ namespace Sintaxis_1
     {
         public enum Tipos
         {
-            Identificador,Numero,Caracter,FinSentencia,
+            Identificador, Numero, Caracter, FinSentencia,
             InicioBloque, FinBloque, OperadorTernario,
             OperadorTermino, OperadorFactor, OperadorRelacional, OperadorLogico,
             IncrementoTermino, IncrementoFactor, Moneda, Asignacion, Puntero, Cadena, TipoDato,
@@ -38,6 +38,6 @@ namespace Sintaxis_1
         {
             return clasificacion;
         }
-       
+
     }
 }

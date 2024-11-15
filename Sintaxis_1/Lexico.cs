@@ -12,11 +12,11 @@ namespace Sintaxis_1
         StreamReader archivo;
         protected StreamWriter log;
         protected StreamWriter asm;
-        int linea;
+        protected int linea;
         const int F = -1;
         const int E = -2;
 
-        readonly int[,] TRAND = {
+        int[,] TRAND = {
                  //WS  L   D   .  E|e  +   -   ;   {   }   ?   =   *   %   &   |   !   <   >   "   \  #    /  \n  EOF lambda             
                 {  0,  1,  2, 33,  1, 12, 14,  8,  9, 10, 11, 23, 16, 16, 18, 20, 21, 26, 25, 27, 29, 32, 34,  0,  F, 33  },
                 {  F,  1,  1,  F,  1,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F,  F  },
@@ -74,6 +74,7 @@ namespace Sintaxis_1
             {
                 throw new Error("El archivo prueba.cpp no existe", log);
             }
+            DateTimeNow();
         }
         public Lexico(string nombreArchivo)
         {
@@ -98,6 +99,23 @@ namespace Sintaxis_1
             {
                 throw new Error("El archivo tiene extension invalida", log);
             }
+            DateTimeNow();
+            LogProgramInfo(nombreArchivo);
+        }
+
+        private void LogProgramInfo(string nombreArchivo)
+        {
+            log.WriteLine("Programa ejecutandose: " + nombreArchivo);
+            log.WriteLine("-----------------------------------------");
+        }
+
+        private void DateTimeNow()
+        {
+            string fecha = DateTime.Now.ToString("dd-MM-yyyy");
+            string hora = DateTime.Now.ToString("HH:mm:ss");
+
+            log.WriteLine("Fecha: " + fecha);
+            log.WriteLine("Hora: " + hora);
         }
 
 
@@ -216,68 +234,82 @@ namespace Sintaxis_1
             return 25;
         }
 
-                private void Clasificar(int state)
+        private void Clasificar(int state)
         {
             switch (state)
             {
-                case 1: 
-                setClasificacion(Tipos.Identificador); 
+                case 1:
+                    setClasificacion(Tipos.Identificador);
                     break;
 
-                case 2: 
-                setClasificacion(Tipos.Numero); 
+                case 2:
+                    setClasificacion(Tipos.Numero);
                     break;
 
-                case 8: setClasificacion(Tipos.FinSentencia);
+                case 8:
+                    setClasificacion(Tipos.FinSentencia);
                     break;
 
-                case 9: setClasificacion(Tipos.InicioBloque);
+                case 9:
+                    setClasificacion(Tipos.InicioBloque);
                     break;
 
-                case 10: setClasificacion(Tipos.FinBloque); 
+                case 10:
+                    setClasificacion(Tipos.FinBloque);
                     break;
 
-                case 11: setClasificacion(Tipos.OperadorTernario); 
+                case 11:
+                    setClasificacion(Tipos.OperadorTernario);
                     break;
 
                 case 12:
-                case 14: setClasificacion(Tipos.OperadorTermino); 
+                case 14:
+                    setClasificacion(Tipos.OperadorTermino);
                     break;
 
-                case 13: setClasificacion(Tipos.IncrementoTermino); 
+                case 13:
+                    setClasificacion(Tipos.IncrementoTermino);
                     break;
 
-                case 15: setClasificacion(Tipos.Puntero); 
+                case 15:
+                    setClasificacion(Tipos.Puntero);
                     break;
 
                 case 16:
-                case 34: setClasificacion(Tipos.OperadorFactor); 
+                case 34:
+                    setClasificacion(Tipos.OperadorFactor);
                     break;
 
-                case 17: setClasificacion(Tipos.IncrementoFactor); 
+                case 17:
+                    setClasificacion(Tipos.IncrementoFactor);
                     break;
 
                 case 18:
                 case 20:
                 case 29:
                 case 32:
-                case 33: setClasificacion(Tipos.Caracter); 
+                case 33:
+                    setClasificacion(Tipos.Caracter);
                     break;
 
                 case 19:
-                case 21: setClasificacion(Tipos.OperadorLogico); 
+                case 21:
+                    setClasificacion(Tipos.OperadorLogico);
                     break;
 
                 case 22:
                 case 24:
                 case 25:
-                case 26: setClasificacion(Tipos.OperadorRelacional); 
+                case 26:
+                    setClasificacion(Tipos.OperadorRelacional);
                     break;
 
-                case 23: setClasificacion(Tipos.Asignacion); 
+                case 23:
+                    setClasificacion(Tipos.Asignacion);
                     break;
 
-                case 27: setClasificacion(Tipos.Cadena); 
+                case 27:
+                    setClasificacion(Tipos.Cadena);
                     break;
             }
         }
@@ -322,19 +354,19 @@ namespace Sintaxis_1
                 String mensaje;
                 if (getClasificacion() == Tipos.Numero)
                 {
-                    mensaje = "en Lexico, Se espera un digito";
+                    mensaje = "en Lexico: Se espera un digito";
                 }
                 else if (getClasificacion() == Tipos.Cadena)
                 {
-                    mensaje = "en Lexico, Se esperaban comillas";
+                    mensaje = "en Lexico: Se esperaban comillas";
                 }
                 else if (getClasificacion() == Tipos.Caracter)
                 {
-                    mensaje = "en Lexico, Se esperaba cierre de comentario ";
+                    mensaje = "en Lexico: Se esperaba cierre de comentario ";
                 }
                 else
                 {
-                    mensaje = "en Lexico, Se esperaba cierre de comillas ";
+                    mensaje = "en Lexico: Se esperaba cierre de comillas ";
                 }
                 throw new Error(mensaje, log, linea);
             }
@@ -361,7 +393,7 @@ namespace Sintaxis_1
 
             }
 
-            log.WriteLine(getContenido() + " = " + getClasificacion());
+            log.WriteLine(getContenido() + " -> " + getClasificacion());
 
         }
 
