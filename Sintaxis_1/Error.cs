@@ -9,14 +9,14 @@ namespace Sintaxis_1
     public class Error : Exception
     {
         public Error(string message, int linea) : base("Error " + message) { }
-        public Error(string message, StreamWriter logger) : base("Error " + message)
+        public Error(string message, StreamWriter log) : base("Error " + message)
         {
-            logger.WriteLine("Error " + message);
+            log.WriteLine("Error " + message );
         }
 
-        public Error(string message, StreamWriter logger, int linea) : base("Error " + message + " en la linea " + linea)
+        public Error(string message, StreamWriter log, int linea, int columna) : base("Error " + message + " en la linea " + linea + " y columna " + columna)
         {
-            logger.WriteLine("Error " + message + " en la linea " + linea);
+            log.WriteLine("Error " + message + " en la linea " + linea + " y columna " + columna);
         }
     }
 }

@@ -1,7 +1,7 @@
-Fecha: 14-11-2024
-Hora: 15:54:22
+Fecha: 18-11-2024
+Hora: 19:41:30
 Programa ejecutandose: prueba.cpp
------------------------------------------
+<--------------------------------->
 using -> Identificador
 Constructor lenguaje
 System -> Identificador
@@ -92,6 +92,7 @@ ReadLine -> Identificador
 ( -> Caracter
 ) -> Caracter
 ; -> FinSentencia
+
 if -> PalabraReservada
 ( -> Caracter
 d -> Identificador
@@ -277,4 +278,4 @@ Write -> Identificador
 } -> FinBloque
 } -> FinBloque
  -> FinBloque
-Hay 55 líneas en el archivo prueba.cpp
+Hay 56 líneas en el archivo prueba.cpp

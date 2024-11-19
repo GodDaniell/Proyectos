@@ -13,6 +13,7 @@ namespace Sintaxis_1
         protected StreamWriter log;
         protected StreamWriter asm;
         protected int linea;
+        protected int columna;
         const int F = -1;
         const int E = -2;
 
@@ -74,6 +75,8 @@ namespace Sintaxis_1
             {
                 throw new Error("El archivo prueba.cpp no existe", log);
             }
+            linea = 1;
+            columna = 0;
             DateTimeNow();
         }
         public Lexico(string nombreArchivo)
@@ -87,7 +90,7 @@ namespace Sintaxis_1
             }
             else
             {
-                throw new Error("El archivo " + nombreArchivo + " no existe", log);
+                throw new Error("El archivo " + nombreArchivo + " no existe ", log);
             }
 
             if (Path.GetExtension(nombreArchivo) == ".cpp")
@@ -99,6 +102,8 @@ namespace Sintaxis_1
             {
                 throw new Error("El archivo tiene extension invalida", log);
             }
+            linea = 1;
+            columna = 0;
             DateTimeNow();
             LogProgramInfo(nombreArchivo);
         }
@@ -106,7 +111,7 @@ namespace Sintaxis_1
         private void LogProgramInfo(string nombreArchivo)
         {
             log.WriteLine("Programa ejecutandose: " + nombreArchivo);
-            log.WriteLine("-----------------------------------------");
+            log.WriteLine("<--------------------------------->");
         }
 
         private void DateTimeNow()
@@ -335,9 +340,11 @@ namespace Sintaxis_1
                 if (estado >= 0)
                 {
                     archivo.Read();
+                    columna++;
                     if (c == '\n')
                     {
                         linea++;
+                        columna = 0;
                     }
                     if (estado > 0)
                     {
@@ -354,21 +361,21 @@ namespace Sintaxis_1
                 String mensaje;
                 if (getClasificacion() == Tipos.Numero)
                 {
-                    mensaje = "en Lexico: Se espera un digito";
+                    mensaje = $"en Lexico: Se espera un digito en la línea {linea} y columna {columna} ";
                 }
                 else if (getClasificacion() == Tipos.Cadena)
                 {
-                    mensaje = "en Lexico: Se esperaban comillas";
+                    mensaje = $"en Lexico: Se esperaban comillas en la línea {linea} y columna {columna} ";
                 }
                 else if (getClasificacion() == Tipos.Caracter)
                 {
-                    mensaje = "en Lexico: Se esperaba cierre de comentario ";
+                    mensaje = $"en Lexico: Se esperaba cierre de comentario  en la línea {linea} y columna {columna}";
                 }
                 else
                 {
-                    mensaje = "en Lexico: Se esperaba cierre de comillas ";
+                    mensaje = $"en Lexico: Se esperaba cierre de comillas en la línea {linea} y columna {columna}";
                 }
-                throw new Error(mensaje, log, linea);
+                throw new Error(mensaje, log, linea,columna);
             }
 
             setContenido(Buffer);

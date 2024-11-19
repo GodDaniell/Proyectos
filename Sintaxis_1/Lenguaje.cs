@@ -318,36 +318,33 @@ namespace Sintaxis_1
         // Console -> Console.(WriteLine|Write) (cadena concatenaciones?);
         private void console()
         {
-            int tipoConsola;
             string contenido = "";
 
             match("Console");
             match(".");
 
-            if (getContenido() == "Write")
+            string operacion = getContenido();
+
+            if (operacion == "Write")
             {
-                tipoConsola = 1;
                 match("Write");
             }
-            else if (getContenido() == "WriteLine")
+            else if (operacion == "WriteLine")
             {
-                tipoConsola = 2;
                 match("WriteLine");
             }
-            else if (getContenido() == "Read")
+            /*else if (operacion == "Read")
             {
-                tipoConsola = 3;
                 match("Read");
             }
             else
             {
-                tipoConsola = 4;
                 match("ReadLine");
             }
-
+            */
             match("(");
-            
-            if (tipoConsola == 1 || tipoConsola == 2)
+
+            if (operacion == "Write" || operacion == "WriteLine")
             {
                 if (getClasificacion() == Tipos.Cadena || getClasificacion() == Tipos.Identificador)
                 {
@@ -360,34 +357,31 @@ namespace Sintaxis_1
                     {
                         match(Tipos.Identificador);
                     }
+
+                    /*
                     if (getContenido() == "+")
                     {
-                        //Concatenaciones(ref contenido);
+                        // Concatenaciones(ref contenido);
                     }
+                    */
                 }
             }
 
             match(")");
 
-            if (tipoConsola == 1)
+            if (operacion == "Write")
             {
                 Console.Write(contenido);
                 log.Write(contenido);
             }
-            else if (tipoConsola == 2)
+            else
             {
                 Console.WriteLine(contenido);
                 log.WriteLine(contenido);
             }
-            else if (tipoConsola == 3)
-            {
-                Console.Read();
-            }
-            else
-            {
-                Console.ReadLine();
-            }
         }
+
+
 
 
         // Main -> static void Main(string[] args) BloqueInstrucciones
