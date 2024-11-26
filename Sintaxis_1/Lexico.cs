@@ -400,7 +400,7 @@ namespace Sintaxis_1
 
             }
 
-            log.WriteLine(getContenido() + " -> " + getClasificacion());
+            //log.WriteLine(getContenido() + " -> " + getClasificacion());
 
         }
 

@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 static void Main(string[] args)
 {
     char c;
-    int  a,b,c,d;
-    int  i,k;
+    int a, b, d;
+    int i, k;
+    float radio, base, area, altura;
 
     a = (3 + 5) * 8 - (10 - 4) / 2; // 61
-
+    c = 0;
+    e = k * a + b;
     if (1 != 2)
     {
-        Console.Write("\nIngrese el valor de d = ");
+        Console.Write("Ingrese el valor de d = ");
         d = Console.ReadLine();
         if (d % 2 == 0)
         {
