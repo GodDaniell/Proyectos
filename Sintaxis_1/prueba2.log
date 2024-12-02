@@ -1,9 +1,16 @@
-Fecha: 26-11-2024
-Hora: 15:39:43
+Fecha: 02-12-2024
+Hora: 11:57:54
 Programa ejecutandose: prueba2.cpp
 <--------------------------------->
-Es verdadero
+n es igual a 5
+n es diferente de 5
+Es par 
+b es igual a 2
+b es mayor a 3
+b no es igual a 3
+Es impar
 Lista de variables : 
-a Int 61
-b Int 2
-Hay 15 líneas en el archivo prueba.cpp
+a Int 101
+b Int 101
+n Int 0
+Hay 55 líneas en el archivo prueba.cpp

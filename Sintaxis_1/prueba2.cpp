@@ -6,21 +6,50 @@ using System.Threading.Tasks;
 static void Main(string[] args)
 {
   int a, b = Console.ReadLine();
-  a = (3 + 5) * 8 - (10 - 2*b) / b; // 61
+  a = (3 + 5) * 8 - (10 - 2 * b) / b; // 61
+  a--;
+  a += 40;
+  a *= 2;
+  a--;
+  a -= 99;
 
-  int c = 0;
-  c++;
-  c++;
-  c /= 2;
+  int n = 5;
 
-  if(a + 9 == 70) {
-    Console.WriteLine("Es verdadero");
-    if(b == 2) {
+  for (b = 100; a < n; a++)
+  {
+    b++;
+    while (b != 5)
+    {
+      if (n == 5)
+      {
+        Console.WriteLine("n es igual a 5");
+      }
+      else
+      {
+        Console.WriteLine("n es diferente de 5");
+      }
+    }
+  }
+
+  if (a % 2 == 0)
+  {
+    Console.WriteLine("Es par " + a + " " + b);
+    if (b == 3)
+    {
       Console.WriteLine("b es igual a 2");
 
-      if(b > 3) {
+      if (b > 3)
+      {
         Console.WriteLine("b es mayor a 3");
       }
     }
+    else
+    {
+      Console.WriteLine("b no es igual a 3");
+    }
+  }
+  else
+  {
+    Console.WriteLine("Es impar");
   }
 }
